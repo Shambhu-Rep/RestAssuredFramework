@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.sdet.Test05_GETRequest_ExtractJsonValidation"/>
+      <class name="com.sdet.Test01_POSTRequest"/>
+      <class name="com.sdet.Test06_GETRequest_Authorization"/>
+      <class name="com.sdet.Test02_GETRequest_HeaderValidation"/>
+      <class name="com.sdet.Test04_GETRequest_ValidateJSONResponse"/>
+      <class name="com.sdet.Test03_GETRequest_GetAllHeaders"/>
+      <class name="com.sdet.Test01_GETRequest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,34 @@
+API Testing using RestAssured
+BDD - Behaviour Driven Development Approach
+-------------------------------------------------
+
+Setup Environment
+--------------------------
+Java 
+Eclipse
+Maven
+TestNG
+Rest Assured dependencies
+-------------------------------
+rest-assured
+json-schema-validation
+json-path
+xml-path
+testng
+java-hamcrest
+hamcrest-core
+hamcrest-library
+
+========================================================
+1. Keyword used in BDD
+2. How to send GET Request
+URL: 
+
+given()
+	set cookies, add auth, add param, set header info etc...
+when()
+	get,put,post,delete ....
+then()
+	validate status code, extract response, extract header cookies and response body...
+
+

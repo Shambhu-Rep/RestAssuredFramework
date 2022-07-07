@@ -1,0 +1,147 @@
+http://www.dummy.restapiexample.com/
+
+Rest Assured:
+Java lib (api) for testing RESTful web services
+To test XML & JSON based web services
+Supports POST, GET, PUT, DELETE, OPTION, PATCH,HEAD...
+Can be integrated with testing framework like Unit, TestNG...
+Rest Assured is implemented in Groovy
+
+
+Prerequisite:
+Java
+IDE
+Maven
+TestNG
+
+Below depency used to convert in JSON format
+gson
+jachson
+json
+Simple json
+
+Mock APIs
+--------------------------
+npm install -g json-server
+json-server --watch db.json
+
+
+Data Driver
+-------------------------
+Prepare test data in Excel sheet
+Add Apache poi dependency in pom.xml file
+or
+download Apache poi and attach jars to your project buil path
+Create Excel utility file (java class file) which will reach data from excel sheet
+Write TestNG with Data Provider method
+
+Rest Assured Framework
+---------------------------
+Used to organized test automation files in proper structure 
+Objectives:
+
+1) Re-usability
+2) Maintainability
+
+Step1: what kind of FW we have to use-Analyse
+
+Pre-defined: TestNG, Junit, Cucumber, Robot etc...
+
+Customized/User defined framework
+		- Data driven FW, Hybrid FW etc..
+		
+Hybrid Approach-->
+	1. Rest Assured
+	2. Test NG
+	3. Maven
+	4. Jenkins(CI)
+	5. Git, github
+	
+API test cases
+
+
+Step2: Maven project
+
+Maven is a build tool when i create maven project by defeault you will get build.xml file
+in build.xml you just specify maven dependency  it will download require jar files
+you can also execute complete project from cmd prompt without having eclipse
+you can also Execute in jenkins
+
+Implementation of FW:
+-----------------------
+1. Implementation/Development
+2. Execution
+3. Maintainance
+
+1. Implementation/Development:
+	create maven project
+	update pom.xml
+	create folder structure
+
+Folder Structure
+--------------------
+Project Name
+		|
+		base class(package)
+		|
+		testCases(package)
+		|
+		utilities(package)
+		|
+		logs (Folder)
+		|
+		reports (Folder)
+		|
+		pom.xml
+		|
+		testNG.xml
+
+Sample Log request and validation:
+--------------------------------------
+RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1";
+		RequestSpecification httpRequest = RestAssured.given();
+		Response response = httpRequest.request(Method.GET,"/employees");
+Validation:
+----------
+int statusCode=response.getStatusCode(); // Getting status Code
+String responseBody = response.getBody().asString(); //Getting response body
+long responseTime = response.getTime(); // Getting Response Time
+String statusLine = response.getStatusLine(); // Getting status Line
+String contentType = response.header("Content-Type"); //Getting header
+String serverType = response.header("Server"); // Checking server type ==>nginx/1.14.1
+
+// First get the JsonPath object instance from the Response interface
+		JsonPath jsonPathEvaluator = response.jsonPath();
+			 
+		//Capture id
+		String empID=jsonPathEvaluator.get("[0].id");
+POST Request: 
+------------
+RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1";
+		httpRequest = RestAssured.given();
+
+		// JSONObject is a class that represents a simple JSON. We can add Key-Value pairs using the put method
+		//{"name":"John123X","salary":"123","age":"23"}
+		JSONObject requestParams = new JSONObject();
+		requestParams.put("name", empName); // Cast
+		requestParams.put("salary", empSalary);
+		requestParams.put("age", empAge);
+		
+		// Add a header stating the Request body is a JSON
+		httpRequest.header("Content-Type", "application/json");
+
+		// Add the Json to the body of the request
+		httpRequest.body(requestParams.toJSONString());
+
+		response = httpRequest.request(Method.POST, "/create");
+
+How many ways we can can execute framework/test cases
+Within Eclipse
+--------------
+1.TestNG.xml
+2.pom.xml(maven-compiler-plugin and maven-surefire-plugin)
+Outside Eclipse
+--------------
+1.Command promt
+2.run.bat
+3.jenkins

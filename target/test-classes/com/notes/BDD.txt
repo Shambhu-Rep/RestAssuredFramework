@@ -1,0 +1,22 @@
+API Testing using RestAssured
+BDD - Behaviour Driven Development Approach
+-------------------------------------------------
+
+Setup Environment
+--------------------------
+Java 
+Eclipse
+Maven
+TestNG
+Rest Assured dependencies
+-------------------------------
+rest-assured
+json-schema-validation
+json-path
+xml-path
+testng
+java-hamcrest
+hamcrest-core
+hamcrest-library
+
+
